@@ -36,7 +36,9 @@ class mdl_orders extends CI_Model {
 				'order_text' => $this->input->post('order_text')
 			);
 			$this->db->insert($this->table, $memData);
-			return $this->db->insert_id();
+			if($this->isUserLoggedIn) {
+				return $this->db->insert_id();
+			}
 		}
 		else{
 			return FALSE;
